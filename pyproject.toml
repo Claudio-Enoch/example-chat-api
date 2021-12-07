@@ -1,0 +1,25 @@
+[tool.black]
+line-length = 120
+target-version = ["py39"]
+
+[tool.isort]
+line_length = 120
+
+[tool.pytest.ini_options]
+addopts = "-v -s -p no:cacheprovider --cov=app"
+testpaths = ["tests"]
+log_cli = true
+
+[tool.coverage.run]
+source = ['app']
+branch = true
+omit = [
+    "tests/*",
+    "manage.py"
+]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 90
+exclude_lines = ['if __name__ == "__main__":']
+

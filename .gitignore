@@ -1,0 +1,15 @@
+# IDE configs
+.idea
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+.pytest_cache/
+
+# Environments
+venv
+
+# Test Coverage
+.coverage
+
+# Pytest config
+pytest.ini

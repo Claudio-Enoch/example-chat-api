@@ -1,0 +1,9 @@
+black==21.12b0
+isort==5.10.1
+docker==5.0.3
+Flask==2.0.2
+flask-restx==0.5.1
+Flask-SQLAlchemy==2.5.1
+psycopg2-binary==2.9.2
+pytest==6.2.5
+pytest-cov==3.0.0
