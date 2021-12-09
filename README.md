@@ -23,16 +23,12 @@ Example chat API for sending messages from one user to another
   `docker exec -it example-chat-api_api_1 bash`  
   `python manage.py seed_db`
 
-- Navigate to **http://localhost:5000/** for documentations
+- Navigate to **http://localhost:5000/** for documentation
 
-### Run Tests
+### Run Tests ✓
 
 - Install  
   `pip install -r requirements.txt`
-- Run live reload application   
-  `python manage.py run`
-- Install pre-commit hook  
-  `pre-commit install`
 - Run tests  
   `pytest`
 
@@ -55,9 +51,9 @@ Example chat API for sending messages from one user to another
 
 ### Enhancements
 
-- Document expected payloads in Swagger docs
-- API - marshal request and response payloads
-- DB - leverage UUIDs instead of passing around primary_key INT IDs
+- **Document** expected payloads in Swagger docs
+- Marshal request and response payloads
+- Leverage UUIDs instead of passing around primary_key INT IDs
 - Separate DB from API
 - Expand tests
 - Implement Auth

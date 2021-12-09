@@ -49,7 +49,10 @@ class Messages(Resource):
     @messages_namespace.response(400, "validation_error")
     @messages_namespace.response(404, "resource_not_found")
     def post(self):
-        """Create MESSAGE from one USER to another"""
+        """
+        Create MESSAGE from one USER to another
+        {"recipient_id": 1, "author_id": 1, "content": "lorem ipsum"}
+        """
         payload = request.get_json(force=True)
         if not all(
             [

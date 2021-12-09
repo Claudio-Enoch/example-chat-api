@@ -16,7 +16,10 @@ class Users(Resource):
     @users_namespace.response(400, "duplicate_user")
     @users_namespace.response(400, "validation_error")
     def post(self):
-        """Create USER with unique username"""
+        """
+        Create USER with unique username
+        Payload: {"username": "NewUser"}
+        """
         payload = request.get_json()
         if not (username := payload.get("username")):
             abort(400, "validation_error")
