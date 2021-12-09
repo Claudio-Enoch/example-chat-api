@@ -1,10 +1,11 @@
 from dataclasses import dataclass
 
 from app import db
+from app.models.crud import CRUD
 
 
 @dataclass
-class User(db.Model):
+class User(db.Model, CRUD):
     __table_args__ = {"schema": "chat"}
 
     id: int = db.Column(db.Integer, primary_key=True)
