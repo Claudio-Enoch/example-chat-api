@@ -1,4 +1,4 @@
-from flask import jsonify, request, abort, make_response
+from flask import abort, jsonify, make_response, request
 from flask_restx import Namespace, Resource
 
 from app.models import User as DbUser

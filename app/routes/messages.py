@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta
-from flask import jsonify, abort, request, make_response
+
+from flask import abort, jsonify, make_response, request
 from flask_restx import Namespace, Resource
+
 from app.models import Message as DbMessage
 from app.models import User as DbUser
 
