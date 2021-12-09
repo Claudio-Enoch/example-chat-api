@@ -17,7 +17,7 @@ def app_client(app_context, _db_client) -> FlaskClient:
 def _db_client(app_context):
     db.drop_all()
     db.create_all()
-    seed_db(db)
+    seed_db()
     yield db
     db.session.remove()
 
