@@ -37,8 +37,6 @@ def docker_postgres_connection_string() -> str:
     connection_string = f"postgresql://postgres:postgres@localhost:{test_port}/warehouse"
     client = docker.from_env()
     image, logs = client.images.build(path="db")
-    # for log in logs:
-    # print(log)
     container = client.containers.run(image=image, ports={"5432/tcp": "5555"}, detach=True)
     try:
         check_postgres_connection(url=connection_string, tries=5)

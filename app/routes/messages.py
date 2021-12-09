@@ -6,7 +6,7 @@ from flask_restx import Namespace, Resource
 from app.models import Message as DbMessage
 from app.models import User as DbUser
 
-messages_namespace = Namespace(name="MeSsAgEs", description="*** MESSAGE DESCRIPTION **")
+messages_namespace = Namespace(name="Messages", description="Endpoint to manage messages to-and-from users")
 
 
 class Messages(Resource):
@@ -16,9 +16,12 @@ class Messages(Resource):
     parser.add_argument("page", type=int, required=False, help="Pagination of messages")
 
     @messages_namespace.expect(parser, validate=True)
+    @messages_namespace.response(200, "success")
+    @messages_namespace.response(400, "validation_error")
+    @messages_namespace.response(404, "resource_not_found")
     def get(self):
         """
-        Get all messages to a given author
+        Get all MESSAGES sent to a specific USER
         responses are limited to 100 per page
         messages are limited to the last 30 days
         """
@@ -42,13 +45,11 @@ class Messages(Resource):
             )
         return jsonify(message)
 
+    @messages_namespace.response(201, "success")
     @messages_namespace.response(400, "validation_error")
     @messages_namespace.response(404, "resource_not_found")
     def post(self):
-        """
-        - POST /messages
-          - { message: STR, author: INT, recipient: INT} -> { message: STR, author: INT, recipient: INT}
-        """
+        """Create MESSAGE from one USER to another"""
         payload = request.get_json(force=True)
         if not all(
             [

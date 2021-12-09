@@ -3,7 +3,7 @@ from flask_restx import Namespace, Resource
 
 from app.models import User as DbUser
 
-users_namespace = Namespace("Users", description="Endpoint to retrieve and create Users")
+users_namespace = Namespace("Users", description="Endpoint to manage users")
 
 
 class Users(Resource):
@@ -12,6 +12,7 @@ class Users(Resource):
         users = DbUser.query.all()
         return jsonify(users)
 
+    @users_namespace.response(200, "success")
     @users_namespace.response(400, "duplicate_user")
     @users_namespace.response(400, "validation_error")
     def post(self):
@@ -26,6 +27,7 @@ class Users(Resource):
         return make_response(jsonify(user), 201)
 
 
+@users_namespace.response(200, "success")
 @users_namespace.response(400, "validation_error")
 @users_namespace.response(404, "resource_not_found")
 class User(Resource):
